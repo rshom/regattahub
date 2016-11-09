@@ -1,4 +1,29 @@
-auto: true
-markdown: rdiscount
-permalink: /:year/:month/:day/:title
-rdiscount extensions: [smart]
+# Welcome to Jekyll!
+#
+# This config file is meant for settings that affect your whole blog, values
+# which you are expected to set up once and rarely need to edit after that.
+# For technical reasons, this file is *NOT* reloaded automatically when you use
+# 'jekyll serve'. If you change this file, please restart the server process.
+
+# Site settings
+title: My Project
+email: myemail@example.com
+description: > # this means to ignore newlines until "baseurl:"
+    This is a base project for all other projects. It uses a jekyll on top of a very simple bootstrap template. A few of the pages are already filled out so that they can use my contact information and sign up for tools I already have in place.
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "http://mydomain.com" # the base hostname & protocol for your site
+twitter_username: RShomberg
+github_username:  rshom 
+
+# Build settings
+markdown: kramdown
+kramdown:
+  input: GFM
+
+# Third-party services
+# just leave someone empty to disable it
+google_analytics: 
+#disqus_shortname:
+
+# used this for post_excerpt at index_page
+excerpt_separator: <!--description-->

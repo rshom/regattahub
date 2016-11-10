@@ -4,7 +4,6 @@ For my personal use. Professional follow through is important. The point of this
 
 ## TODO on this project
 
- - [ ] add google-analytics
  - [ ] auto xml sitemap
  - [ ] mailing list sign up
  - [ ] test auto blog functionality

@@ -56,6 +56,18 @@ The link to blog is commented out since most projects won't need it. However, if
 
 ### RSS feed
 
+Blog posts are auto added to feed.xml. However, any post or page is ignored if draft is a variable in the front matter. You must **delete** the draft line to include it
+```
+---
+layout: default
+sitemap:
+    priority: 0.7
+    changefreq: 'monthly'
+    lastmod: 2013-03-29T12:49:30-05:00
+draft: yes
+---
+```
+
 
 ### XML sitemap
 
@@ -70,7 +82,17 @@ sitemap:
 ---
 ```
 
-Blog posts are auto added as well, so make sure to delete the test post if you don't want it
+Blog posts are auto added as well. However, any post or page is ignored if draft is a variable in the front matter. You must **delete** the draft line to include it
+```
+---
+layout: default
+sitemap:
+    priority: 0.7
+    changefreq: 'monthly'
+    lastmod: 2013-03-29T12:49:30-05:00
+draft: yes
+---
+```
 
 ### Google analytics
 

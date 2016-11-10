@@ -4,6 +4,7 @@ layout: null
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   {% for post in site.posts %}
+  {% unless post.draft %}
   <url>
     <loc>{{ site.url }}{{ post.url }}</loc>
     {% if post.lastmod == null %}
@@ -14,8 +15,10 @@ layout: null
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
+  {% endunless %}
   {% endfor %}
   {% for page in site.pages %}
+  {% unless page.draft %}
   {% if page.sitemap != null and page.sitemap != empty%}
   <url>
     <loc>{{ site.url }}{{ page.url }}</loc>
@@ -24,5 +27,6 @@ layout: null
     <priority>{{ page.sitemap.priority }}</priority>
   </url>
   {% endif %}
+  {% endunless %}
   {% endfor %}
 </urlset>

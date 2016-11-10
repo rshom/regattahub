@@ -4,7 +4,6 @@ For my personal use. Professional follow through is important. The point of this
 
 ## TODO on this project
 
- - [ ] auto xml sitemap
  - [ ] mailing list sign up
  - [ ] test auto blog functionality
 
@@ -49,15 +48,33 @@ Contact also includes a thanks page that the user is forwarded to after attempti
 
 Fill in a description of your team and the project here.
 
+Use /_team/ directory to add or modify team members
+
 ### Blog
 
 The link to blog is commented out since most projects won't need it. However, if you need it, just uncomment the line in _layouts/default.html and start posting in _posts
 
 ### RSS feed
 
+
 ### XML sitemap
 
+Site map generates from any page that has sitemap front matter looking like this. 
+```
+---
+layout: default
+sitemap:
+    priority: 0.7
+    changefreq: 'monthly'
+    lastmod: 2013-03-29T12:49:30-05:00
+---
+```
+
+Blog posts are auto added as well, so make sure to delete the test post if you don't want it
+
 ### Google analytics
+
+Update code in _config.yml
 
 ### README.md
 

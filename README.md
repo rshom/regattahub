@@ -2,12 +2,20 @@
 
 For my personal use. Professional follow through is important. The point of this repo is to have all the follow through done at the start of the project. This way, I can just insert my project into my base and I'm ready to go.
 
-## Start TODO
+## TODO on this project
+
+ - [ ] add google-analytics
+ - [ ] auto xml sitemap
+ - [ ] mailing list sign up
+ - [ ] test auto blog functionality
+
+## Start new project TODO
 
  - [ ] clone this repo
  - [ ] connect repo to equivalent repo on github
  - [ ] modify _config.yl
  - [ ] replace README.md with a custom one
+ - [ ] add anyone to the team
 
 ## Before Launch
 
@@ -21,7 +29,7 @@ For my personal use. Professional follow through is important. The point of this
 
 Very simple bootstrap with fixed header. Credit goes to [Bootstrap Zero](https://www.bootstrapzero.com/bootstrap-template/basic). Put any edits in css/styles.css. It already auto adjusts to different sized devices, but always test that functionality to be sure.
 
-You can generate other pages as necessary. Just make sure they have front matter for jekyll. When you add a page, you will have to add a menu link to it at _layouts/default.html
+You can generate other pages as necessary. Just make sure they have front matter for jekyll. Put all pages in /_pages/. Any pages with category: base show up on left menu. Any pages with category: helper show up on right menu.
 
 ### Index
 

@@ -5,10 +5,13 @@
 # For technical reasons, this file is *NOT* reloaded automatically when you use
 # 'jekyll serve'. If you change this file, please restart the server process.
 
-include: ['_pages']
+include: ['_pages','_team']
+
 
 # Site settings
 title: My Project
+author: Russell Shomberg
+copyright_date: 2016
 email: myemail@example.com
 description: > # this means to ignore newlines until "baseurl:"
     This is a base project for all other projects. It uses a jekyll on top of a very simple bootstrap template. A few of the pages are already filled out so that they can use my contact information and sign up for tools I already have in place.

@@ -14,10 +14,73 @@ category: helper
   <h2>How it all started</h2>
   <p>This is another paragraph explaining the story of how and more importantly why the project was started. Keep these short as not many people will read them. These lines should be full of useful links.</p>
 
-  <h2>The Team</h2>
-  <!-- try to get some images sin here. anyone clicking over here clearly wants to see us. -->
-  <p>This is my chance to share my credentials. Disregard how limited they are. Try to push traffic to other stuff I do or encourage people to contact me for any reason. Make sure to change it to about me for solo projects. Maybe plug the blog if there is one.</p>
-  <p>TODO: make a little template for displaying the team members</p>
+  <!--<h2>The Team</h2>-->
+  <!-- I think it looks better without the heading for team -->
+  <!-- try to get some images in here. anyone clicking over here clearly wants to see us. -->
+  {% for member in site.pages %}
+  {% if member.category=='team' %}
+  <div class="col-md-4 text-center">
+    <h3>{{ member.title }}</h3>
+    <h4>{{ member.job }}</h4>
+  <img src="/img/{{ member.image | prepend: site.baseurl }}" alt="{{ member.title }} profile" style="width:50%; border-radius:50%;">
+  <div class="team-member">
+    {{ member.content }}
+  </div>
+  <div class="social team-social">
+    <ul class="social team-social">
+      {% if member.email %}
+      <li class="social team-social">
+	<a href="mailto:{{ member.email }}">
+	  <i class="fa fa-envelope"></i></a>
+      </li>
+      {% endif %}
+      {% if member.twitter_username %}
+      <li class="social team-social">
+	<a href="https://twitter.com/{{ member.twitter_username }}">
+	  <i class="fa fa-twitter"></i></a>
+      </li>
+      {% endif %}
+      {% if member.github_username %}
+      <li class="social team-social">
+	<a href="https://github.com/{{ member.github_username }}">
+	  <i class="fa fa-github"></i>
+	</a>
+      </li>
+      {% endif %}
+      {% if member.linkedin_username %}
+      <li class="social team-social">
+	<a href="https://linkedin.com/in/{{ member.linkedin_username }}">
+	  <i class="fa fa-linkedin"></i> LinkedIn
+	</a>
+      </li>
+      {% endif %}
+      {% if member.google_plus_username %}
+      <li class="social team-social">
+	<a href="https://plus.google.com/{{ member.google_plus_username }}">
+	  <i class="fa fa-google-plus"></i> Google+
+	</a>
+      </li>
+      {% endif %}
+      {% if member.facebook_username %}
+      <li class="social team-social">
+	<a href="https://www.facebook.com/{{ member.facebook_username }}">
+	  <i class="fa fa-facebook"></i> Facebook
+	</a>
+      </li>
+      {% endif %}
+      {% if member.dribbble_username %}
+      <li class="social team-social">
+	<a href="https://dribbble.com/{{ member.dribbble_username }}" class="icon">
+	  <i class="fa fa-dribbble"></i> Dribbble
+	</a>
+      </li>
+      {% endif %}
+    </ul>
+    
+  </div>
+  </div>
+  {% endif %}
+  {% endfor %}
   
   
 

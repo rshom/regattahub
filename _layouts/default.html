@@ -12,6 +12,7 @@
 			<script src="//html5shim.googlecode.com/svn/trunk/html5.js"></script>
 		<![endif]-->
 		<link href="{{ "/css/styles.css" | prepend:site. baseurl }}" rel="stylesheet">
+		<link href="{{ "/css/social.css" | prepend:site. baseurl }}" rel="stylesheet">
 	</head>
 	<body>
 <div class="navbar navbar-default navbar-static-top">
@@ -47,8 +48,16 @@
   <section>
     {{ content }}
   </section>
-</div><!-- /.container -->
-	<!-- script references -->
+</div>
+<!-- /.container -->
+
+<div class="footer">
+  <div class="container">
+    <p class="text-muted">&copy {% if page.copyright_date %}{{ page.copyright_date }} {% else if site.copyright_date %} {{ site.copyright_date }} {% endif %} {{ site.author }}</p>
+  </div>
+</div>
+
+<!-- script references -->
 		<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
 		<script src="{{ "/js/bootstrap.min.js" | prepend: site.baseurl }}"></script>
 	</body>

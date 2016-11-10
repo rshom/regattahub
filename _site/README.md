@@ -29,9 +29,18 @@ Put the actual project here.
 
 ### Contact
 
+Basic email contact form and contact information. Add more information if you want more than just email. Form runs through formspree.io and is all set up. You just have to confirm your email address. I recommend setting up a new email and having it forward for any test websites.
+
+Contact page include few hidden attributes that help with email managment
+ - _gotcha is a honeypot for spam
+ - _replyto so emails can be replied directly to
+ - _subject to add something about it coming from the website
+
+Contact also includes a thanks page that the user is forwarded to after attempting to contact.
+
 ### About
 
-#### Description
+Fill in a description of your team and the project here.
 
 ### Blog
 

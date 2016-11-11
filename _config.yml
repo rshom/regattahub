@@ -15,8 +15,8 @@ copyright_date: 2016
 email: myemail@example.com
 description: > # this means to ignore newlines until "baseurl:"
     This is a base project for all other projects. It uses a jekyll on top of a very simple bootstrap template. A few of the pages are already filled out so that they can use my contact information and sign up for tools I already have in place.
-baseurl: "/jekyll-baseline" # the subpath of your site, e.g. /blog
-url: "rshom.github.io" # the base hostname & protocol for your site
+baseurl: "" # the subpath of your site, e.g. /blog
+url: "" # the base hostname & protocol for your site
 twitter_username: RShomberg
 github_username: rshom
 linkedin_username: 

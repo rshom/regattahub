@@ -4,7 +4,6 @@ For my personal use. Professional follow through is important. The point of this
 
 ## TODO on this project
 
- - [ ] mailing list sign up
  - [ ] test auto blog functionality
 
 ## Start new project TODO
@@ -19,6 +18,7 @@ For my personal use. Professional follow through is important. The point of this
 
  - [ ] about page
  - [ ] domain name
+ - [ ] update google_analytics
  - [ ] email list: replace _includes/mailchimp.html
 
 ## Features

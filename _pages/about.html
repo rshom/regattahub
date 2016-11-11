@@ -3,28 +3,53 @@ layout: default
 title: About
 permalink: /about/
 category: helper
-layout: default
 sitemap:
     priority: 0.7
     changefreq: 'monthly'
     lastmod: 2016-11-10
 ---
-
-  
-  <h1>{{ page.title }}</h1>
-  <p class="lead">This is a tagline for my project. It is descriptive, but remains short and punchy.</p>
-  <p>I can say little more here about the project and discuss intentions. This should act as a call to action and possibly include some useful links within. Depending on what type of project it is, this could be a sales pitch or a description of how one might get involved. Here, I'll sugest you fork this project and use it yourself.</p>
-  <p>Make sure the about page is about the viewer and not about developer.</p>
-  {% include mailchimp.html %}
-  
-
-  <h2>How it all started</h2>
-  <p>This is another paragraph explaining the story of how and more importantly why the project was started. Keep these short as not many people will read them. These lines should be full of useful links.</p>
-
-  <!--<h2>The Team</h2>-->
+<div class="container">
+  <div class="row">
+    <div class="col-md-12 text-center">
+      <h1>{{ page.title }}</h1>
+      <p class="lead">Build courses faster and better. Make sailing more fun!</p>
+    </div>
+  </div>
+  <div class="row">
+       <div class="col-md-6">
+	 <p>
+	   Sailing is all about strategy. Wind shifts, currents, weather, and other sailors all play into that, but if your course isn't set right, all other factors become insignifcant. 
+	 </p>
+	 <p>
+	   We think better courses make sailing more fun, and we think courses can be made better and faster. RegattaHub makes that possible.
+	 </p>
+       </div>
+       <div class="col-md-6">
+	 <p>
+	   Managing race courses is hard work, especially when the wind gets shifty. We appreciate all the volunteers on local Race Committees expecially because we often are those volunteers, but we also recognize that much can be done better.
+	 </p>
+	 <p>
+	   Managing a team of volunteers can be tricky. By improving communication, RegattaHub makes setting and re-setting courses faster and more accurate.
+	 </p>
+       </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      {% include mailchimp.html %}
+    </div>
+  </div>
+<!--
+  <div class="row">
+    <div class="col-md-12">
+      <h2>How it all started</h2>
+      <p>This is another paragraph explaining the story of how and more importantly why the project was started. Keep these short as not many people will read them. These lines should be full of useful links.</p>
+    </div>
+  </div>
+  -->
+  <div class="row">
+    <h1 class="text-center">The Team</h1>
   <!-- I think it looks better without the heading for team -->
   <!-- try to get some images in here. anyone clicking over here clearly wants to see us. -->
-{% include team-members.html %}
-  
-  
-
+  {% include team-members.html %}
+  </div>
+</div>

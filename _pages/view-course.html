@@ -1,0 +1,109 @@
+---
+layout: default
+title: View Course
+permalink: /view-course/
+category: no-display
+---
+<h1 id="courseName">My&nbsp<span id="courseType"></span></h1>
+<div class="row">
+<div class="col-sm-12">
+  <a class="btn btn-default" href="#">Save</a>
+  <a class="btn btn-default" href="/build/">Share</a>
+</div>
+</div>
+
+<div class="row">
+  <div class="col-sm-12 col-md-6" id="courseView">
+    <h3>View</h3>
+    <p id="output">There is an error! Contact russ if this continues.</p>
+    <p>Here there would be some sort of graphical representation of the course instead of just a list of marks.</p>
+  </div>
+  <div class="col-sm-12 col-md-6" id="runForm">
+    <h3>Run</h3>
+    <form action="{{ "/run/" | prepend: site.baseurl }}" method="GET">
+    <h4>Current Conditions</h4>
+    <div class="form-group">
+	<label for"windBearing">Wind Bearing:</label>
+	<input type="number" min="0" max="360" step="0.1" name="windBearing" id="windBearing" class="form-control" value="0">
+	<p class="help-box">Degrees True</p>
+    </div>
+    
+    <h4>Committee Boat Position</h4>
+      <div class="form-group">
+	<button type="button" class="btn btn-default form-control" onclick="inputPosition()">Use my current position</button>
+      </div>
+    <div class="form-group">
+	<label for"boatLatitude">Latitude:</label>
+	<input type="number" min="-90" max="90" step="0.0000000000001" name="boatLatitude" id="boatLatitude" class="form-control">
+    </div>
+    <div class="form-group">
+	<label for"boatLongitude">Longitude:</label>
+	<input type="number" min="-180" max="180" step="0.0000000001" name="boatLongitude" id="boatLongitude" class="form-control">
+      </div>
+      <!-- Include a bunch of hidden inputs for the marks
+	   that probably isnt the best way to do that
+	-->
+      <input type="hidden" name="marks" id="marksList" value="hello">
+      <input type="submit" class="btn btn-success form-control" value="Run" >
+    </form>
+  </div>
+</div>
+    
+    <script>
+
+      inputPosition();
+function inputPosition() {
+    navigator.geolocation.getCurrentPosition(
+	function(position) {
+	    // run for success
+	    document.getElementById("boatLatitude").value=position.coords.latitude;
+	    document.getElementById("boatLongitude").value=position.coords.longitude;
+	},
+	function(position) {
+	    // run for error
+	    console.log('error getting position');
+	},
+	{
+	    // helper
+	    timeout: 50000,
+	    maximumAge: Infinity,
+	    enableHighAccuracy: true
+
+	}
+    );
+
+}
+
+
+// put all background functions in my main js file
+// show basically what is happening here
+
+      var courseName = getQueryVariable('courseType');
+      document.getElementById('courseType').innerHTML = courseName;
+var viewSource = getQueryVariable('inputSource');
+if (viewSource == 'builder') {
+    var output = '<p>Your course is ready!</p><h4>Marks</h4>';
+    var marksList = "";
+    // run the functions to build the course
+    marks = build_course(location.search.substring(1));
+    // convert mark list to string
+    for (i=0; i<marks.length; i++) {
+	output += i+". "+marks[i].name+": "+marks[i].x+", "+marks[i].y+"<br>";
+	marksList +=marks[i].name+","+marks[i].x+","+marks[i].y+";";
+    }
+
+    // put marklist into value for form
+    document.getElementById('output').innerHTML = output;
+    document.getElementById('marksList').value = marksList;
+
+} else if (viewSource == 'courseList') {
+    // build the course, but this time it is easier
+    // actually probably the same with a few steps skipped
+} else {
+    // indicate there is no course to build
+    document.getElementById('output').innerHTML = "there is no course to build. Try going to Courses or Build.";
+}
+
+
+</script>
+

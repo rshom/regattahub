@@ -2,16 +2,35 @@
 layout: default
 title: Home
 permalink: /
-category: base
+category: 
 sitemap:
     priority: 0.7
     changefreq: 'monthly'
     lastmod: 2016-11-10T00:00:00
 ---
-
-<h1>My Project</h1>
-<p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-
-
+<div class="row">
+<div id="welcome" class="col-md-12 text-center">
+<h1>Welcome to {{ site.title }},</h1>
+<p class="lead">Our goal is to help race committees and instructors build better sailing courses faster. We believe better courses make sailing more fun. <a href="{{ "/about" | prepend: site.baseurl }}"> Learn more...</a></p>
+<p><a class="btn btn-lg btn-success" href="{{ "/build" | prepend: site.baseurl }}">Get started by building a course</a><p>
+</div>
+</div>
+<div class="row">
+  <div class="col-md-12 text-center">
+    <p>You are currently looking at an early development of the program. Please play with absolutely everything, and if you like it, share with your friends. We are working on a standalone app and many other features. This site will be updated as those features come out. Stay tuned for more updates.</p>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12">
+{% include mailchimp.html %}
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-12 text-center">
+    <p class="lead">
+      <a href="{{ "/contact" | prepend:site.baseurl }}">Contact us</a> with any suggestions or thoughts you have on the RegattaHub or if you want to get involved in the project.
+    </p>
+  </div>
+</div>
 
 

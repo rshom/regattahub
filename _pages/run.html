@@ -1,0 +1,165 @@
+---
+layout: default
+title: Run you course
+permalink: /run/
+category: no-display
+---
+<h1 id="courseName">Your Course</h1>
+
+<div class="col-sm-12 col-md-6" id="selectMark">
+  <h2>Set a Mark</h2>
+  <div class="form-group">
+    <label for="selectMark">Select Mark</label>
+    <select name="selectMark" id="selectMarkDropdown" class="form-control" onchange="currentMark = selectMark(document.getElementById('selectMarkDropdown').value)">
+      <!-- load values based on query string -->
+    </select>
+  </div>
+  <div id="markInfo">
+    <h3>Weather Mark</h3>
+    <p><strong>Latitude:&nbsp&nbsp&nbsp&nbsp</strong><span id="latitudeDisplay">Loading..</span></p>
+    <p><strong>Longitude:&nbsp</strong> <span id="longitudeDisplay">Loading..</span></p>
+  </div>
+  <div class="form-group">
+    <button class="btn btn-success form-control" data-toggle="modal" data-target="#markGuideModal" onclick="watchPosition(currentMark)">Go to Mark</button>
+  </div>
+  <!-- stays hidden then pops up to guide you to the mark -->
+  <div class="modal" id="markGuideModal" role="dialog">
+    <div class="modal-dialog">
+      <div class="modal-content">
+	<div class="modal-header">
+	  <button type="button" class="close" data-dismiss="modal">&times;</button>
+	  <h4 id="targetName">Mark Name</h4>
+	  <h5><span id="currentTargetDistance"></span>&nbsp;meters</h5>
+	</div>
+	<div class="modal-body">
+	    <img id="arrow" src="{{ "/img/arrow.png" | prepend: site.baseurl }}" style="transform: rotate(0deg); width:80%;" />
+	</div>
+	<div class="modal-footer">
+	  <button type="button" class="btn btn-default" data-dismiss="modal">Done</button>
+	</div>
+      </div>
+    </div>
+  </div>
+  
+  <div>
+    <h2>View Map</h2>
+    <p>Put a map here showing all the marks and my current position. More will be added to the map, such as sharing positions other mark boats. I would like it to be displayed over a nautical chart showing some basic information.</p>
+    <p>This screen needs some work. If Im only a mark boat, I should be able to see the updates should be refresh buttons instead of forms. The committee boat should make all the decisions.</p>
+    <p>Also add a back or edit button</p>
+  </div>
+</div>
+<div class="col-sm-12 col-md-6" id="windUpdate">
+  <h2>Wind Conditions</h2>
+  <div class="form-group">
+    <label for="windBearing">Wind Bearing</label>
+    <input type="number" min="0" max="360" class="form-control" name="windBearing" id="windBearing">
+    <p class="help-block">Degrees</p>
+  </div>
+  <div class="form-group">
+    <input type="button" class="btn btn-success form-control" value="Update" input onclick="updateWind()">
+  </div>
+</div>
+<div class="col-sm-12 col-md-6" id="boatUpdate">
+  <h2>Committee Boat Position</h2>
+  <form>
+  <div class="form-group">
+    <input type="button" class="btn btn-default form-control" onclick="inputPosition()" value="Use my current position">
+  </div>
+  <div class="form-group">
+    <label for"boatLatitude">Latitude:</label>
+    <input type="number" min="-90" max="90" step="0.0000000000001" name="boatLatitude" id="boatLatitude" class="form-control">
+  </div>
+  <div class="form-group">
+    <label for"boatLongitude">Longitude:</label>
+    <input type="number" min="-180" max="180" step="0.0000000001" name="boatLongitude" id="boatLongitude" class="form-control">
+  </div>
+  <!-- Include a bunch of hidden inputs for the marks
+       that probably isnt the best way to do that
+    -->
+  <div class="form-group">
+    <input type="button" class="btn btn-success form-control" value="Update" onclick="updateBoatPosition()" >
+  </div>
+  </form>
+</div>
+
+    <script>
+    // grab from query string;;
+var boatLatitude = getQueryVariable('boatLatitude');
+document.getElementById('boatLatitude').value = boatLatitude;
+var boatLongitude = getQueryVariable('boatLongitude');
+document.getElementById('boatLongitude').value = boatLongitude;
+var windBearing = getQueryVariable('windBearing');
+document.getElementById('windBearing').value = windBearing;
+var marksList = getQueryVariable('marks').split('%3B');
+var marks = {};
+var dropdownMarks = "";
+for (i=0;i<(marksList.length-1);i++) {
+    vals = marksList[i].split('%2C');
+    marks[vals[0]] = {
+	x: vals[1],
+	y: vals[2]
+    };
+    // make a select line as well
+    dropdownMarks+="<option value="+vals[0]+">"+vals[0]+"</option>";
+}
+document.getElementById('selectMarkDropdown').innerHTML = dropdownMarks;
+currentMark = selectMark('Boat');
+
+// update selected mark
+//// default is the boat
+function selectMark(choice) {
+    mymark = marks[choice];
+    var distance = Math.sqrt(mymark.x*mymark.x+mymark.y*mymark.y);
+    var bearing = rad_to_deg(Math.atan2(mymark.x,mymark.y));
+    coords = find_endpoint(boatLatitude,boatLongitude,distance,bearing-windBearing)
+    
+    var output = "<h3>"+choice+"</h3>";
+    output += '<p><strong>Latitude:&nbsp</strong><span id="latitudeDisplay">'+coords.latitude+'</span></p>';
+    output += '<p><strong>Longitude:&nbsp</strong><span id="longitudeDisplay">'+coords.longitude+'</span></p>';
+
+    document.getElementById('markInfo').innerHTML = output;
+    document.getElementById('targetName').innerHTML = choice;
+    return {name: choice,latitude:coords.latitude,longitude:coords.longitude};
+}
+
+
+function updateWind() {
+    windBearing = document.getElementById('windBearing').value;
+}
+
+function updateBoatPosition() {
+    boatLatitude = document.getElementById('boatLatitude').value;
+    boatLongitude = document.getElementById('boatLongitude').value;
+    // update the current mark display
+    selectMark(document.getElementById("selectMarkDropdown").value);
+}
+
+function inputPosition() {
+    navigator.geolocation.getCurrentPosition(
+	function(position) {
+	    // run for success
+	    // update the values shown
+	    document.getElementById("boatLatitude").value=position.coords.latitude;
+	    document.getElementById("boatLongitude").value=position.coords.longitude;
+	    // update the actual values
+	    //updateBoatPosition();
+	    // no dont. Its not good for usability
+	},
+	function(position) {
+	    // run for error
+	    console.log('error getting position');
+	},
+	{
+	    // helper
+	    timeout: 50000,
+	    maximumAge: Infinity,
+	    enableHighAccuracy: true
+	    
+	}
+    );
+    
+}
+
+
+
+</script>

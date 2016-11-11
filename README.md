@@ -1,10 +1,10 @@
-# Minimum Viable Product Base
+# RegattaHub
 
 ## Start new project TODO
 
- - [ ] clone this repo
- - [ ] rename newREADME.md to README.md and fill in some basics
- - [ ] connect repo to equivalent repo on github
+ - [X] clone this repo
+ - [X] rename newREADME.md to README.md and fill in some basics
+ - [X] connect repo to equivalent repo on github
  - [ ] modify _config.yl
  - [ ] replace README.md with a custom one
  - [ ] add anyone to the team

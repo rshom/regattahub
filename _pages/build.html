@@ -1,0 +1,39 @@
+---
+layout: default
+title: Build a New Course
+permalink: /build/
+category: base
+sitemap:
+    priority: 0.7
+    changefreq: 'monthly'
+    lastmod: 2016-11-10
+---
+<h1>New Course</h1>
+
+<form id="initialCourseParameters" action="{{ "/view-course/index.html" | prepend:site.baseurl }}" method="GET">
+  <h2>Basic</h2>
+  <div class="form-group">
+    <input type="hidden" name="inputSource" value="builder">
+    <label for="courseType">Select course type</label>
+    <select class="form-control" id="courseType" name="courseType">
+      <option>Windward-Leeward</option>
+      <option>Triangle</option>
+      <option>Trapazoid</option>
+      <option>Custom</option>
+      <!-- The custum will just allow you locate your marks based on x,y coords in meters -->
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="windwardLeg">Windward Leg</label>
+    <input class="form-control" type="number" value="1000" id="windwardLeg" name="windwardLeg">
+    <span class="help-block">meters</span>
+  </div>
+  <div class="form-group">
+    <label for="startLine">Starting Line</label>
+    <input class="form-control" type="number" value="200" id="startLine" name="startLine">
+    <span class="help-block">meters</span>
+  </div>
+  <h2>Advanced</h2>
+  <p>Here is an expanding block that has more options. This is where gates, reach angles and other such stuff goes. For most users, the defaults are fine. I'll fill some in later.</p>
+  <input type="submit" class="btn btn-default" value="Generate Course">
+</form>

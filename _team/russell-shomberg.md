@@ -3,7 +3,7 @@ title: Russell Shomberg
 layout: team-member
 job: Developer
 category: team
-image: russell-shomberg-profile.png
+image: /img/russell-shomberg-profile.png
 website: https://russellshomberg.com
 email: russellshomberg@gmail.com
 twitter_username: RShomberg

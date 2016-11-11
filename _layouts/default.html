@@ -29,14 +29,14 @@
       <ul class="nav navbar-nav">
 	{% for p in site.pages %}
 	{% if p.category=='base' %}
-        <li {% if p.title==page.title %} class="active" {% endif %}><a href="{{ p.url }}">{{ p.title }}</a></li>
+        <li {% if p.title==page.title %} class="active" {% endif %}><a href="{{ p.url | prepend: site.baseurl }}">{{ p.title }}</a></li>
 	{% endif %}
 	{% endfor %}
       </ul>
       <ul class="nav navbar-nav navbar-right">
 	{% for p in site.pages %}
 	{% if p.category=='helper' %}
-        <li {% if p.title==page.title %} class="active" {% endif %}><a href="{{ p.url }}">{{ p.title }}</a></li>
+        <li {% if p.title==page.title %} class="active" {% endif %}><a href="{{ p.url | prepend: site.baseurl }}">{{ p.title }}</a></li>
 	{% endif %}
 	{% endfor %}
       </ul>

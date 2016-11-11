@@ -57,6 +57,10 @@
     background: #e64522;
 }
 
+.social li:hover .fa-link {
+    background: #343434;
+}
+
 .social li:hover .fa-facebook {
     background: #4060A5;
 }

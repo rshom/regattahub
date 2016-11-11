@@ -1,9 +1,10 @@
 ---
 title: Russell Shomberg
+layout: team-member
 job: Developer
 category: team
 image: russell-shomberg-profile.png
-website: russellshomberg.com
+website: https://russellshomberg.com
 email: russellshomberg@gmail.com
 twitter_username: RShomberg
 github_username: rshom

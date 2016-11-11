@@ -23,6 +23,7 @@ linkedin_username:
 google_plus_username: 
 facebook_username:    
 dribbble_username:
+mailchimp_listid: 73893ecf8d
 
 # Build settings
 markdown: kramdown

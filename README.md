@@ -17,9 +17,9 @@ For my personal use. Professional follow through is important. The point of this
 
 ## Before Launch
 
- - [ ] email list
- - [ ] domain name
  - [ ] about page
+ - [ ] domain name
+ - [ ] email list: replace _includes/mailchimp.html
 
 ## Features
 

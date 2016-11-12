@@ -259,6 +259,9 @@ function build_course() {
 	output=marks;
 
     } else if (courseType=='Triangle') {
+	var windwardLeg = Number(getQueryVariable('windwardLeg'));
+	var startLine = Number(getQueryVariable('startLine'));
+
 	// Build triangle course
 	// variable set up
 	var marks = [];
@@ -279,7 +282,7 @@ function build_course() {
 
 	// weather mark is centered and up
 	var mark = {};
-	mark.name = 'Weather';
+	mark.name = 'Windward';
 	mark.x = -startLine/2;
 	mark.y = windwardLeg;
 	marks.push(mark);
@@ -301,9 +304,73 @@ function build_course() {
 
 	output=marks;
 
-    } else if (courseType=='Trapazoid') {
-	// Build trapazoid course
-	output = "Sorry I can't build trapazoids yet. Try Windward-leedward perhaps";
+    } else if (courseType=='Trapezoid') {
+	var windwardLeg = Number(getQueryVariable('windwardLeg'));
+	var startLine = Number(getQueryVariable('startLine'));
+	var interiorAngle = deg_to_rad(60.);
+
+	// Build trapezoid course
+	//// this is a silly course, but impossible without our program
+	// variable set up
+	var marks = [];
+
+	// race committee is always at 0,0 since it never moves and anchors the course
+	var mark = {};
+	mark.name = 'Boat'; // naming conventions are real life...
+	mark.x = 0;
+	mark.y = 0;
+	marks.push(mark);
+
+	// pin is left of boat
+	var mark = {};
+	mark.name = 'Pin';
+	mark.x = -startLine;
+	mark.y = 0;
+	marks.push(mark);
+
+	// weather mark is centered and up
+	var mark = {};
+	mark.name = 'Windward';
+	mark.x = -startLine/2;
+	mark.y = windwardLeg;
+	marks.push(mark);
+	
+	// reach mark depends on the windward interior angle
+	//// I'm making assumptions for simplicity
+	var mark = {};
+	mark.name = 'Reach';
+	mark.x = (-2./3)*windwardLeg*Math.sin(interiorAngle)-startLine/2;
+	mark.y = windwardLeg-(2./3)*windwardLeg*Math.cos(interiorAngle);
+	marks.push(mark);
+
+	// leeward mark is centered and down same distance as weather
+	var mark = {};
+	mark.name = 'Leeward';
+	mark.x = (-2./3)*windwardLeg*Math.sin(interiorAngle)-startLine/2;
+	mark.y = (-2./3)*windwardLeg*Math.cos(interiorAngle);
+	marks.push(mark);
+
+	// make a little reference for the finish
+	var finishDistance = windwardLeg/16.; // silly
+	var finishLine = startLine/2; // silly
+	var finishAngle = deg_to_rad(120-90); //silly
+	var x = mark.x+finishDistance*Math.cos(finishAngle);
+	var y = mark.y-finishDistance*Math.sin(finishAngle);
+
+	var mark = {};
+	mark.name = 'Finish Starboard';
+	mark.x = x+finishLine*Math.sin(finishAngle);
+	mark.y = y+finishLine*Math.cos(finishAngle);
+	marks.push(mark);
+
+	var mark = {};
+	mark.name = 'Finish Port';
+	mark.x = x-finishLine*Math.sin(finishAngle);
+	mark.y = y-finishLine*Math.cos(finishAngle);
+	marks.push(mark);
+
+	output=marks;
+
     } else if (courseType=='Custom') {
 	// Build custom course
 	// this one might require a seperate more involved function

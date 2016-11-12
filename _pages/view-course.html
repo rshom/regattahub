@@ -4,19 +4,21 @@ title: View Course
 permalink: /view-course/
 category: no-display
 ---
-<h1 id="courseName">My&nbsp<span id="courseType"></span></h1>
 <div class="row">
 <div class="col-sm-12">
+<a class="btn btn-default" href="{{ "/build" | prepend: site.baseurl}}">Back</a>
+<h1 id="courseName">My&nbsp<span id="courseType"></span></h1>
+<!-- implement save and share functionality
   <a class="btn btn-default" href="#">Save</a>
-  <a class="btn btn-default" href="/build/">Share</a>
+  <a class="btn btn-default" href="#">Share</a>
+-->
 </div>
 </div>
-
 <div class="row">
   <div class="col-sm-12 col-md-6" id="courseView">
     <h3>View</h3>
-    <p id="output">There is an error! Contact russ if this continues.</p>
-    <p>Here there would be some sort of graphical representation of the course instead of just a list of marks.</p>
+    <p id="output">There is an error! Contact <a href="mailto:russ@regattahub.com">russ@regattahub.com</a> if this continues.</p>
+    <!--<p>Here there would be some sort of graphical representation of the course instead of just a list of marks.</p>-->
   </div>
   <div class="col-sm-12 col-md-6" id="runForm">
     <h3>Run</h3>
@@ -34,15 +36,13 @@ category: no-display
       </div>
     <div class="form-group">
 	<label for"boatLatitude">Latitude:</label>
-	<input type="number" min="-90" max="90" step="0.0000000000001" name="boatLatitude" id="boatLatitude" class="form-control">
+	<input type="number" min="-90" max="90" step="0.00000000000000001" name="boatLatitude" id="boatLatitude" class="form-control">
     </div>
     <div class="form-group">
 	<label for"boatLongitude">Longitude:</label>
-	<input type="number" min="-180" max="180" step="0.0000000001" name="boatLongitude" id="boatLongitude" class="form-control">
+	<input type="number" min="-180" max="180" step="0.000000000000001" name="boatLongitude" id="boatLongitude" class="form-control">
       </div>
-      <!-- Include a bunch of hidden inputs for the marks
-	   that probably isnt the best way to do that
-	-->
+      <input type="hidden" name="courseName" id="formcourseName" value="Course">
       <input type="hidden" name="marks" id="marksList" value="hello">
       <input type="submit" class="btn btn-success form-control" value="Run" >
     </form>
@@ -78,8 +78,9 @@ function inputPosition() {
 // put all background functions in my main js file
 // show basically what is happening here
 
-      var courseName = getQueryVariable('courseType');
-      document.getElementById('courseType').innerHTML = courseName;
+var courseName = getQueryVariable('courseType');
+document.getElementById('courseType').innerHTML = courseName; // title at top
+document.getElementById('formcourseName').value = courseName; // form
 var viewSource = getQueryVariable('inputSource');
 if (viewSource == 'builder') {
     var output = '<p>Your course is ready!</p><h4>Marks</h4>';

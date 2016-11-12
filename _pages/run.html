@@ -4,8 +4,12 @@ title: Run you course
 permalink: /run/
 category: no-display
 ---
-<h1 id="courseName">Your Course</h1>
-
+<div class="row">
+  <div class="col-md-12">
+<h1>My&nbsp<span id="courseName"></span></h1>
+  </div>
+</div>
+<div class="row">
 <div class="col-sm-12 col-md-6" id="selectMark">
   <h2>Set a Mark</h2>
   <div class="form-group">
@@ -40,13 +44,14 @@ category: no-display
       </div>
     </div>
   </div>
-  
+  <!--
   <div>
     <h2>View Map</h2>
     <p>Put a map here showing all the marks and my current position. More will be added to the map, such as sharing positions other mark boats. I would like it to be displayed over a nautical chart showing some basic information.</p>
     <p>This screen needs some work. If Im only a mark boat, I should be able to see the updates should be refresh buttons instead of forms. The committee boat should make all the decisions.</p>
     <p>Also add a back or edit button</p>
   </div>
+-->
 </div>
 <div class="col-sm-12 col-md-6" id="windUpdate">
   <h2>Wind Conditions</h2>
@@ -81,9 +86,13 @@ category: no-display
   </div>
   </form>
 </div>
+</div>
 
     <script>
-    // grab from query string;;
+      // grab from query string;;
+      var courseName = getQueryVariable('courseName');
+      document.getElementById('courseName').innerHTML = courseName; // title at top
+
 var boatLatitude = getQueryVariable('boatLatitude');
 document.getElementById('boatLatitude').value = boatLatitude;
 var boatLongitude = getQueryVariable('boatLongitude');

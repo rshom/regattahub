@@ -13,6 +13,8 @@
 		<![endif]-->
 		<link href="/css/styles.css" rel="stylesheet">
 		<link href="/css/social.css" rel="stylesheet">
+		<script src="/js/latlon.js"></script>
+
 	</head>
 	<body>
 <div class="navbar navbar-default navbar-static-top">
@@ -119,12 +121,6 @@
   
       
   
-  <li class="social">
-    <a href="https://github.com/rshom">
-      <i class="fa fa-github"></i> GitHub
-    </a>
-  </li>
-  
   
   
   
@@ -138,7 +134,7 @@
       <div class="row">
 	<div class="form-group col-md-6">
 	  <label for="name">Name:</label>
-	  <input type="text" name="name" id="formName" placeholder="First Last" class="form-control">
+	  <input type="text" name="name" id="formName" placeholder="John Smith" class="form-control">
 	</div>
 	<div class="form-group col-md-6">
 	  <label for="email">Email:</label>
@@ -148,7 +144,7 @@
       <div class="row">
 	<div class="form-group col-md-12">
 	  <label for="message">Message:</label>
-	  <textarea rows="15" form="contactform" name="message" id="formMessage" class="form-control"></textarea>
+	  <textarea rows="15" form="contactform" name="message" id="formMessage" class="form-control" placeholder="Hey, I love your program. I'd love to see some new features added such as ..." required></textarea>
 	</div>
       </div>
       <div class="row">
@@ -176,7 +172,7 @@
 
 <div class="footer">
   <div class="container">
-    <p class="text-muted">&copy  2016  Russell Shomberg</p>
+    <p class="text-muted">&copy  2016  Shomberg Systems</p>
   </div>
 </div>
 

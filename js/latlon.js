@@ -138,13 +138,20 @@ function watchPosition(target) {
 	    var targetBearing = find_bearing(position.coords.latitude,position.coords.longitude,target.latitude,target.longitude);
 	    var relativeBearing = targetBearing - position.coords.heading;
 	    // Rotate my image of an arrow
-	    var placeholder = document.getElementById('arrow'); // grab it by ID
+	    var arrow_html = document.getElementById('arrow'); // grab it by ID
+	    var arrow_x_html = document.getElementById('arrow_x');
 	    var imgRotation = relativeBearing;
 	    // if on a device with no bearing use target bearing
 	    //var imgRotation = targetBearing;
-	    
-	    imgRotation = "rotate("+imgRotation+"deg)"; //make it a proper string
-	    placeholder.style.transform = imgRotation; //change it
+	    if ( targetDistance>5 ) {
+		arrow_html.className = "fa fa-arrow-circle-up";
+		imgRotation = "rotate("+imgRotation+"deg)"; //make it a proper string
+		arrow_html.style.transform = imgRotation; //change it
+		arrow_html.style.color = "green";
+	    } else {
+		arrow_html.className = "fa fa-times-circle-o";
+		arrow_html.style.color = "red";
+	    }
 
 	    // save these variables as global
 	    myLat = position.coords.latitude;

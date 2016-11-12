@@ -8,3 +8,15 @@ p.lead {
 
 #mc_embed_signup{background:#fff; clear:left; font:14px Helvetica,Arial,sans-serif; width:100%;}
 
+#arrow {
+    color: green;
+    font-size: 20em;
+    transform: rotate(0deg);
+    transition: 1s ease-in-out;
+    display: block;
+}
+
+#arrow_x {
+    color: red;
+    font-size: 20em;
+}
